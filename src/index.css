@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Background */
+    --background: 220 35% 10%;
+    --foreground: 210 20% 95%;
+
+    /* Glass Cards */
+    --card: 220 30% 18% / 0.45;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 30% 18% / 0.5;
+    --popover-foreground: 210 20% 95%;
+
+    /* Primary Accent */
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 35% 10%;
+
+    --secondary: 220 25% 20% / 0.4;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 220 20% 22% / 0.4;
+    --muted-foreground: 210 10% 70%;
+
+    --accent: 280 80% 65%;
+    --accent-foreground: 210 20% 95%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Glass Borders */
+    --border: 0 0% 100% / 0.15;
+    --input: 0 0% 100% / 0.1;
+    --ring: 210 100% 60%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(210, 100%, 40%) 0%,
+      hsl(260, 80%, 40%) 50%,
+      hsl(320, 70%, 45%) 100%
+    );
+
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(210, 100%, 60%) 0%,
+      hsl(280, 80%, 65%) 100%
+    );
+
+    /* Shadows */
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35);
+    --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.35);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+
+  /* Hero Gradient */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  /* Glass Card */
+  .glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
+  }
+
+  /* Glass Button */
+  .button-glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+  }
+
+  .button-glass:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Glow Button */
+  .button-glow {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
+  }
+
+  .button-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.55);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
